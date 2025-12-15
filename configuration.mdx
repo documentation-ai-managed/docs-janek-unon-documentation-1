@@ -1,0 +1,143 @@
+---
+title: Configuration and Customization
+description: Customize your Janek Unon space to fit your branding and workflow needs.
+---
+
+## Overview
+
+Tailor Janek Unon to match your brand and team requirements. Adjust themes with custom colors like `#3B82F6`, manage user permissions for secure access, and connect external tools for seamless workflows. These settings ensure your documentation space aligns perfectly with your project.
+
+<Columns cols={3}>
+  <Card title="Theme Settings" icon="palette" href="#theme-settings">
+    Update colors and styles.
+  </Card>
+  <Card title="User Permissions" icon="users" href="#user-permissions">
+    Control access levels.
+  </Card>
+  <Card title="External Integrations" icon="plug" href="#integrations">
+    Connect your tools.
+  </Card>
+</Columns>
+
+## Theme and Color Settings
+
+Set your brand color and other visual elements through the configuration panel or directly in your settings file.
+
+<Steps>
+  <Step title="Access Settings" icon="settings">
+    Navigate to **Space Settings** > **Theme** in the sidebar.
+  </Step>
+  <Step title="Update Primary Color" icon="palette">
+    Enter your hex code, such as `#3B82F6`, in the **Primary Color** field.
+  </Step>
+  <Step title="Apply Changes" icon="check-circle">
+    Click **Save** and refresh your space to see updates.
+  </Step>
+</Steps>
+
+Customize further with a `config.json` file:
+
+<CodeGroup tabs="JSON,YAML">
+  ```json
+  {
+    "theme": {
+      "primaryColor": "#3B82F6",
+      "fontFamily": "Inter, sans-serif",
+      "logoUrl": "https://your-domain.com/logo.png"
+    }
+  }
+  ```
+  ```yaml
+  theme:
+    primaryColor: "#3B82F6"
+    fontFamily: Inter, sans-serif
+    logoUrl: https://your-domain.com/logo.png
+  ```
+</CodeGroup>
+
+<Callout kind="tip">
+  Test color contrast with tools like WebAIM Contrast Checker to ensure readability.
+</Callout>
+
+## User Permissions and Access
+
+Define roles to control what users can do in your Janek Unon space.
+
+<Tabs>
+  <Tab title="Admin" icon="shield">
+    Full access: Edit pages, manage users, configure integrations.
+  </Tab>
+  <Tab title="Editor" icon="edit-3">
+    Edit and publish pages, but cannot manage users or settings.
+  </Tab>
+  <Tab title="Viewer" icon="eye">
+    Read-only access to documentation.
+  </Tab>
+</Tabs>
+
+| Role     | Edit Pages | Manage Users | View Settings |
+|----------|------------|--------------|---------------|
+| Admin    | ✅         | ✅           | ✅            |
+| Editor   | ✅         | ❌           | ❌            |
+| Viewer   | ❌         | ❌           | ✅            |
+
+<ExpandableGroup>
+  <Expandable title="Advanced Permission Rules" default-open="false">
+    Use the API to set granular permissions:
+
+    ```javascript
+    await janekUnon.permissions.set({
+      userId: "user-123",
+      role: "editor",
+      spaces: ["docs-space-abc"]
+    });
+    ```
+  </Expandable>
+</ExpandableGroup>
+
+## Integration with External Tools
+
+Connect Janek Unon to GitHub, Slack, or custom webhooks for automated updates.
+
+<Columns cols={2}>
+  <Card title="GitHub Sync" icon="github" horizontal>
+    Push changes directly from your repo. Set webhook to `https://api.janek-unon.com/webhooks/github`.
+  </Card>
+  <Card title="Slack Notifications" icon="message-circle" horizontal>
+    Receive alerts on page updates. Use `YOUR_SLACK_WEBHOOK_URL`.
+  </Card>
+</Columns>
+
+Configure a webhook integration:
+
+<Request tabs="cURL,JavaScript">
+  ```bash
+  curl -X POST https://api.janek-unon.com/webhooks/setup \
+    -H "Authorization: Bearer YOUR_API_KEY" \
+    -d '{"url": "https://hooks.slack.com/services/T00000000/B00000000/XXXXXXXXXXXXXXXXXXXXXXXX"}'
+  ```
+  ```javascript
+  const response = await fetch('https://api.janek-unon.com/webhooks/setup', {
+    method: 'POST',
+    headers: { 'Authorization': 'Bearer YOUR_API_KEY' },
+    body: JSON.stringify({ url: 'https://hooks.slack.com/services/T00000000/B00000000/XXXXXXXXXXXXXXXXXXXXXXXX' })
+  });
+  ```
+</Request>
+
+<Response tabs="200">
+  ```json
+  {
+    "status": "success",
+    "webhookId": "wh_456def"
+  }
+  ```
+</Response>
+
+<Callout kind="alert">
+  Replace `YOUR_API_KEY` with your actual token from **Settings** > **API Keys**. Never commit real keys to public repos.
+</Callout>
+
+## Next Steps
+
+Review your changes in a preview mode before going live. Use the search bar to verify permissions across spaces. For more advanced customizations, explore the full API reference.

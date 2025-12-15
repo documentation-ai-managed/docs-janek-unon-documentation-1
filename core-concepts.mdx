@@ -1,0 +1,119 @@
+---
+title: Core Concepts
+description: Explore the fundamental ideas behind Janek Unon, including its structure and key capabilities for documentation management.
+---
+
+## Overview
+
+Janek Unon structures your documentation around workspaces, enabling seamless organization, collaboration, and versioning. You create workspaces to group related docs, invite team members for real-time edits, and track changes with built-in history. These concepts form the foundation for efficient documentation management.
+
+<Columns cols={3}>
+  <Card title="Workspaces" icon="folder" href="/docs/workspaces">
+    Organize docs into isolated environments.
+  </Card>
+  <Card title="Collaboration" icon="users" href="/docs/collaboration">
+    Share and edit with your team securely.
+  </Card>
+  <Card title="Versioning" icon="git-branch" href="/docs/versioning">
+    Maintain history and revert changes easily.
+  </Card>
+</Columns>
+
+## Workspace Organization
+
+Workspaces act as containers for your documentation projects. You define a workspace with a name, description, and optional metadata to keep projects separate.
+
+### Creating a Workspace
+
+Follow these steps to set up your first workspace:
+
+<Steps>
+  <Step title="Initialize Workspace" icon="plus">
+    Use the dashboard to create a new workspace.
+
+    ```javascript
+    const workspace = await janek.createWorkspace({
+      name: "Project Docs",
+      description: "Documentation for Project Alpha"
+    });
+    ```
+  </Step>
+  <Step title="Add Pages" icon="file-text">
+    Structure content with pages and subpages.
+
+    ```bash
+    janek pages add --workspace "Project Docs" --title "Getting Started"
+    ```
+  </Step>
+  <Step title="Configure Permissions" icon="shield">
+    Set access levels for members.
+  </Step>
+</Steps>
+
+<Callout kind="tip">
+  Use nested folders within workspaces for hierarchical organization, like `api/reference` or `guides/advanced`.
+</Callout>
+
+## Collaboration and Sharing
+
+Invite teammates and external reviewers to collaborate in real-time. Janek Unon supports role-based access: admin, editor, viewer.
+
+<Tabs>
+  <Tab title="Team Invite" icon="mail">
+    Send invites via email or link.
+
+    ```javascript
+    await janek.inviteUser({
+      workspaceId: "ws_123",
+      email: "team@example.com",
+      role: "editor"
+    });
+    ```
+  </Tab>
+  <Tab title="Public Sharing" icon="share-2">
+    Generate shareable links with expiration.
+
+    | Feature       | Description                          | Duration Options |
+    |---------------|--------------------------------------|------------------|
+    | View-only     | Read access without edits            | 7 days, 30 days |
+    | Comment-only  | Feedback without changes             | Unlimited       |
+    | Full edit     | Complete access                      | Custom          |
+  </Tab>
+</Tabs>
+
+## Versioning and History
+
+Janek Unon provides Git-like versioning for every page. You view diffs, revert commits, and branch for experiments.
+
+<CodeGroup tabs="CLI,API">
+  ```bash
+  # View history
+  janek history list --page "Getting Started"
+
+  # Revert to version
+  janek history revert --page "Getting Started" --version v1.2
+  ```
+  ```javascript
+  const history = await janek.getPageHistory("Getting Started");
+  await janek.revertPage("Getting Started", history[0].id);
+  ```
+</CodeGroup>
+
+<Expandable title="Advanced Versioning Workflow" default-open="false">
+
+  ```mermaid
+  graph TD
+      A[Draft Changes] --> B[Commit Version]
+      B --> C[Review Diff]
+      C --> D{Approved?}
+      D -- Yes --> E[Publish]
+      D -- No --> A
+  ```
+
+  Integrate with CI/CD by exporting history as JSON for audits.
+
+</Expandable>
+
+<Callout kind="info">
+  All changes auto-save with timestamps. Enable notifications for `@mentions` in comments.
+</Callout>

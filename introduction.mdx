@@ -1,0 +1,102 @@
+---
+title: Introduction to Janek Unon Documentation
+description: An overview of the Janek Unon documentation platform, designed to help you organize and manage project documentation efficiently.
+---
+
+## Overview
+
+Janek Unon is a modern documentation platform that helps you create, organize, and publish project documentation with ease. You can build structured knowledge bases, collaborate with teams, and deliver polished docs to users. Designed for developers, product managers, and technical writers, it supports MDX for rich, interactive content.
+
+<Callout kind="info">
+  Janek Unon uses MDX components to create engaging pages with tabs, steps, and more.
+</Callout>
+
+## Key Features
+
+Janek Unon offers powerful tools to streamline your documentation workflow.
+
+<Columns cols={3}>
+  <Card title="Interactive Components" icon="code" href="/docs/components">
+    Use components like `<Tabs>`, `<Steps>`, and `<Cards>` to make docs dynamic and user-friendly.
+  </Card>
+  <Card title="Version Control" icon="git-branch" href="/docs/versioning">
+    Integrate with Git for seamless version history and collaborative editing.
+  </Card>
+  <Card title="Customizable Themes" icon="palette" href="/docs/themes">
+    Apply your brand colors, like `#3B82F6`, for a professional look.
+  </Card>
+</Columns>
+
+| Feature | Benefit |
+|---------|---------|
+| MDX Support | Embed JSX components directly in markdown |
+| Search & Navigation | Full-text search and sidebar navigation |
+| Analytics | Track page views and user engagement |
+
+## How to Get Started
+
+Follow these steps to set up your Janek Unon documentation site.
+
+<Steps>
+  <Step title="Create Account" icon="user-plus">
+    Sign up at https://janek-unon.com with your email.
+  </Step>
+  <Step title="Initialize Project" icon="package">
+    Create a new documentation space and connect your Git repository.
+  </Step>
+  <Step title="Add Content" icon="file-text">
+    Write your first page using MDX syntax.
+  </Step>
+  <Step title="Publish" icon="globe">
+    Deploy live and share your docs URL.
+  </Step>
+</Steps>
+
+Here is a quick example of adding a code snippet to your docs:
+
+<CodeGroup tabs="JavaScript,Python">
+  ```javascript
+  // Fetch documentation data
+  const response = await fetch('https://api.janek-unon.com/docs');
+  const docs = await response.json();
+  console.log(docs);
+  ```
+  ```python
+  # Fetch documentation data
+  import requests
+  response = requests.get('https://api.janek-unon.com/docs')
+  docs = response.json()
+  print(docs)
+  ```
+</CodeGroup>
+
+## Access Support
+
+Choose the best support option based on your needs.
+
+<Tabs>
+  <Tab title="Documentation" icon="book-open">
+    Explore guides and API references in this space.
+  </Tab>
+  <Tab title="Community Forum" icon="users">
+    Ask questions and share tips on our forum at https://forum.janek-unon.com.
+  </Tab>
+  <Tab title="Email Support" icon="mail">
+    Contact support@janek-unon.com for premium help.
+  </Tab>
+</Tabs>
+
+<Expandable title="Frequently Asked Questions" default-open="false">
+  ### Can I use custom domains?
+  Yes, configure your domain in project settings.
+
+  ### What about SEO?
+  Janek Unon generates sitemaps and meta tags automatically.
+
+  ### Is there an API?
+  Access your docs programmatically via REST endpoints.
+</Expandable>
+
+<Callout kind="tip">
+  Start small: Create one page today and iterate as your project grows.
+</Callout>

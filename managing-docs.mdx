@@ -1,0 +1,122 @@
+---
+title: Guide to Managing Documentation
+description: Learn best practices for creating, editing, and maintaining your project documentation within the platform.
+---
+
+## Overview
+
+Manage your janek unon project documentation effectively to keep it organized and up-to-date. You structure content into pages and sections, add engaging multimedia and links, and follow a streamlined workflow for updates and reviews. These practices ensure your docs remain clear, accessible, and valuable to users.
+
+<Columns cols={3}>
+  <Card title="Structure First" icon="layout" href="#">
+    Organize pages hierarchically for easy navigation.
+  </Card>
+  <Card title="Add Rich Media" icon="image" href="#">
+    Embed images, videos, and diagrams to enhance explanations.
+  </Card>
+  <Card title="Streamline Workflow" icon="git-branch" href="#">
+    Use version control and reviews for consistent quality.
+  </Card>
+</Columns>
+
+## Structuring Pages and Sections
+
+Create a logical hierarchy in your janek unon documentation. Start with top-level sections using H2 headings, then nest subsections with H3 and H4. Use frontmatter for page metadata and maintain consistent naming.
+
+| Element | Purpose | Example |
+|---------|---------|---------|
+| Frontmatter | Page title and description | `title: "Page Name"` |
+| H2 Headings | Main sections | `## Getting Started` |
+| Navigation | Link related pages | `[Link Text](/path/to/page)` |
+
+<CodeGroup tabs="MDX,YAML">
+  ```mdx
+  ---
+  title: "API Reference"
+  description: "Explore endpoints and parameters."
+  ---
+
+  ## Endpoints
+
+  Use `fetch` for requests.
+  ```
+  ```yaml
+  title: "Quickstart"
+  description: "Set up in 5 minutes."
+  ```
+</CodeGroup>
+
+<Callout kind="tip">
+  Limit pages to 2000 words. Break long content into linked subpages.
+</Callout>
+
+## Adding Multimedia and Links
+
+Enhance readability with visuals and navigation. Embed images for screenshots, use `{mermaid}` code blocks for diagrams, and add external links for resources.
+
+<Tabs>
+  <Tab title="Images" icon="image">
+    Use the `<Image>` component for responsive visuals.
+
+    ```jsx
+    <Image
+      src="https://example.com/screenshot.png"
+      alt="Dashboard overview"
+      width="800"
+      height="400"
+    />
+    ```
+
+    Always include `alt` text for accessibility.
+  </Tab>
+  <Tab title="Links" icon="link">
+    Internal links use relative paths: `[Docs](/docs/guide)`.
+
+    External links open in new tabs: `[GitHub](https://github.com/janek-unon/docs)`.
+
+    Avoid broken links by testing previews.
+  </Tab>
+  <Tab title="Diagrams" icon="activity">
+    Create flows with Mermaid code blocks.
+
+    ```mermaid
+    graph TD
+        A[Draft] --> B[Review]
+        B --> C[Publish]
+        C --> D[Update]
+        D --> B
+    ```
+  </Tab>
+</Tabs>
+
+## Workflow for Updates and Reviews
+
+Follow this process to maintain high-quality docs in janek unon.
+
+<Steps>
+  <Step title="Draft Content" icon="edit-3">
+    Write new pages or edits in your editor. Use realistic examples like API calls to `https://api.janek-unon.com/v1/users`.
+  </Step>
+  <Step title="Preview Changes" icon="eye">
+    Preview in the platform to check rendering. Verify code blocks and components parse correctly.
+  </Step>
+  <Step title="Request Review" icon="users">
+    Assign reviewers via comments or pull requests.
+  </Step>
+  <Step title="Publish" icon="upload-cloud">
+    Merge and publish. Tag updates with `{["feature", "bugfix"]}`.
+  </Step>
+</Steps>
+
+<Expandable title="Advanced Review Process" default-open="false">
+  Set up automated checks for broken links and syntax errors. Use labels like `docs-review` in your repository for tracking.
+
+  ```bash
+  npm run lint:docs
+  # Checks MDX parsing and links
+  ```
+</Expandable>
+
+<Callout kind="success">
+  Regular updates keep your docs relevant. Schedule monthly reviews.
+</Callout>

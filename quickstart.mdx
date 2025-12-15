@@ -1,0 +1,136 @@
+---
+title: Quickstart Guide
+description: Get your documentation space up and running quickly with step-by-step instructions for first-time users.
+---
+
+## Quickstart
+
+Set up your janek unon documentation workspace in minutes. Follow these steps to create an account, configure your space, and upload your first content. No prior experience required.
+
+<Callout kind="tip">
+  Complete the entire process in under 5 minutes. Use the CLI for automation or the web interface for simplicity.
+</Callout>
+
+## Step-by-Step Setup
+
+<Steps>
+  <Step title="Create an Account" icon="user-plus">
+
+    Sign up at the janek unon dashboard.
+
+    ```bash
+    npx unon@latest auth signup --email="your-email@example.com" --password="secure-password"
+    ```
+
+    Or visit [https://app.janek-unon.com/signup](https://app.janek-unon.com/signup) in your browser and follow the prompts.
+
+  </Step>
+
+  <Step title="Set Up Your Workspace" icon="folder-plus">
+
+    Initialize a new documentation workspace tied to your account.
+
+    ````bash
+    npx unon@latest workspace create my-project-docs \
+      --description="Documentation for my project" \
+      --brand-color="#3B82F6"
+    ````
+
+    Note your workspace ID: `ws_abc123def456`. Save it for future commands.
+
+  </Step>
+
+  <Step title="Upload and Organize Initial Content" icon="upload-cloud">
+
+    Add your first Markdown files to the workspace.
+
+    Use the CLI to upload a directory:
+
+    ````bash
+    npx unon@latest upload ./docs --workspace="ws_abc123def456" \
+      --structure="quickstart.mdx:./quickstart.mdx,api.mdx:./api/"
+    ````
+
+    Organize content into folders like `guides/`, `api/`, and `changelog.mdx`.
+
+  </Step>
+</Steps>
+
+## Upload Methods
+
+Choose your preferred method to add content.
+
+<Tabs>
+  <Tab title="Web Drag-and-Drop" icon="mouse-pointer">
+
+    1. Navigate to your workspace dashboard.
+    2. Drag files or folders into the upload zone.
+    3. Content auto-organizes by filename.
+
+    <Image
+      src="https://example.com/docs-drag-drop.png"
+      alt="Drag and drop files into the workspace upload area"
+      width="800"
+      height="500"
+    />
+
+  </Tab>
+
+  <Tab title="CLI" icon="terminal">
+
+    <CodeGroup tabs="Bash,PowerShell">
+      ````bash
+      npx unon@latest upload ./src/docs --workspace="ws_abc123def456"
+      ````
+
+      ````powershell
+      unon upload ./src/docs --workspace "ws_abc123def456"
+      ````
+    </CodeGroup>
+
+  </Tab>
+
+  <Tab title="Git Integration" icon="git-branch">
+
+    Connect your GitHub repo directly.
+
+    1. In dashboard, go to Integrations > GitHub.
+    2. Authorize and select `your-org/project-docs`.
+    3. Sync publishes changes automatically.
+
+  </Tab>
+</Tabs>
+
+## Next Steps
+
+Explore these features to enhance your documentation.
+
+<Columns cols={3}>
+  <Card title="Customize Appearance" icon="palette" href="/docs/customization">
+    Adjust themes, logos, and `{brand-color}` settings.
+  </Card>
+
+  <Card title="Collaborate with Team" icon="users" href="/docs/collaboration">
+    Invite members and manage permissions.
+  </Card>
+
+  <Card title="Publish and Share" icon="globe" href="/docs/publishing">
+    Generate a live site and share your docs.
+  </Card>
+</Columns>
+
+<Expandable title="Troubleshooting Common Issues" default-open="false">
+
+  **Workspace ID not found?**
+
+  Run `npx unon@latest workspace list` to verify.
+
+  **Upload fails?**
+
+  Check file sizes `<10MB` and ensure valid MDX syntax.
+
+</Expandable>
+
+<Callout kind="success">
+  Your documentation space is ready! Start editing pages directly in the dashboard.
+</Callout>

@@ -1,0 +1,150 @@
+---
+title: Changelog
+description: Track the evolution of Janek Unon with detailed release notes and updates.
+---
+
+## Recent Releases
+
+Stay updated with the latest improvements in Janek Unon. Review release notes below to understand new features, fixes, and changes.
+
+<Update label="2024-10-15" description="v1.2.0" tags={["feature", "bugfix"]}>
+
+## New Features
+
+- Added real-time collaboration for documentation editing with live cursors and conflict resolution.
+- Introduced customizable themes using your brand color `#3B82F6` as the default accent.
+
+## Improvements
+
+- Enhanced search performance by 40% with indexed full-text queries.
+- Optimized image uploads to support progressive loading.
+
+## Bug Fixes
+
+- Fixed rendering issues with nested code blocks in MDX files.
+- Resolved authentication token refresh failures during long sessions.
+
+</Update>
+
+<Update label="2024-09-20" description="v1.1.0" tags={["feature", "improvement"]}>
+
+## New Features
+
+- Integrated Mermaid diagram support for flowcharts directly in docs.
+- Added API endpoints for programmatic documentation exports.
+
+## Improvements
+
+- Streamlined sidebar navigation with collapsible sections.
+- Better mobile responsiveness for documentation previews.
+
+## Bug Fixes
+
+- Corrected table alignment problems in responsive views.
+- Patched cross-site scripting vulnerabilities in user-generated content.
+
+</Update>
+
+<Update label="2024-08-10" description="v1.0.0" tags={["breaking", "feature"]}>
+
+## Breaking Changes
+
+- Updated configuration format from JSON to YAML for better readability.
+
+## New Features
+
+- Core documentation management with version control integration.
+- User authentication via OAuth providers.
+
+## Initial Setup
+
+- Basic dashboard for organizing docs into spaces.
+
+</Update>
+
+## Breaking Changes Summary
+
+<Callout kind="danger">
+  Review v1.0.0 notes above. Update your config files from JSON to YAML format before upgrading.
+</Callout>
+
+## Upgrade Process
+
+Follow these steps to upgrade Janek Unon smoothly.
+
+<Steps>
+  <Step title="Backup Data" icon="database">
+    Export your current documentation space.
+
+    ```bash
+    janek-unon export --space=default --output=backup.json
+    ```
+  </Step>
+  <Step title="Install New Version" icon="download">
+    Use your package manager to update.
+  </Step>
+  <Step title="Migrate Config" icon="settings">
+    Convert config files.
+
+    <CodeGroup tabs="npm,yarn">
+      ```bash
+      npm install janek-unon@latest
+      ```
+      ```bash
+      yarn add janek-unon@latest
+      ```
+    </CodeGroup>
+  </Step>
+  <Step title="Restart Service" icon="refresh-cw">
+    Restart and verify.
+  </Step>
+</Steps>
+
+<Tabs>
+  <Tab title="Docker" icon="docker">
+    Pull the latest image and redeploy.
+
+    ```bash
+    docker pull janekunon/docs:latest
+    docker-compose up -d
+    ```
+  </Tab>
+  <Tab title="NPM" icon="package">
+    Update globally.
+
+    ```bash
+    npm update -g janek-unon
+    janek-unon migrate-config
+    ```
+  </Tab>
+</Tabs>
+
+## Future Roadmap
+
+Explore upcoming enhancements planned for Janek Unon.
+
+<Columns cols={3}>
+  <Card title="AI Assistance" icon="bot" href="/docs/ai-features">
+    Automated content generation and summaries.
+  </Card>
+  <Card title="Advanced Analytics" icon="bar-chart-3" href="/docs/analytics">
+    Usage insights and popular docs tracking.
+  </Card>
+  <Card title="Multi-Language" icon="globe" href="/docs/i18n">
+    Full internationalization support.
+  </Card>
+</Columns>
+
+<Expandable title="Detailed Migration Guide" default-open="false">
+  For complex setups, run the migration tool:
+
+  ```bash
+  janek-unon migrate --from=v1.0.0 --to=v1.2.0 --dry-run
+  ```
+
+  Review diffs before applying.
+</Expandable>
+
+<Callout kind="tip">
+  Subscribe to our release notifications to stay ahead.
+</Callout>
